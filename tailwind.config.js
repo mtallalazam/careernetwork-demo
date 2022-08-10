@@ -1,4 +1,3 @@
-
 module.exports = {
   mode: 'jit',
   purge: {
@@ -7,25 +6,28 @@ module.exports = {
     content: ['./index.html', './src/**/*.tsx', './src/**/*.ts'],
   },
   theme: {
-    minWidth: {
-      '40': '10rem',
-      '60': '15rem',
-      '80': '20rem',
-      '100': '25rem',
-    },
-    maxWidth: {
-      '120': '30rem',
-      '160': '40rem',
-      '200': '50rem',
-    }
+    // minWidth: {
+    //   40: '10rem',
+    //   60: '15rem',
+    //   80: '20rem',
+    //   100: '25rem',
+    // },
+    // maxWidth: {
+    //   120: '30rem',
+    //   160: '40rem',
+    //   200: '50rem',
+    // },
   },
   variants: {},
-  plugins: [
-    require('daisyui'),
-  ],
+  plugins: [require('daisyui')],
   daisyui: {
     themes: [
-      'emerald'
+      {
+        mytheme: {
+          primary: '#1918FF',
+          secondary: '#4a3aff',
+        },
+      },
     ],
-  }
-}
+  },
+};
