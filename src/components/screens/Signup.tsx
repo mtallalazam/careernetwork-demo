@@ -115,7 +115,7 @@ function Signup() {
         </section>
 
         <section className="w-full row-span-2 lg:row-span-auto flex flex-col items-center justify-center p-5 text-center">
-          <img src={fullLogo} alt="" className="mb-16" />
+          <img src={fullLogo} alt="" className="mb-8 lg:mb-16" />
 
           <form onSubmit={handleSubmit} className="max-w-xl">
             <input
@@ -124,7 +124,7 @@ function Signup() {
               value={formState.email}
               onChange={handleFieldChange}
               placeholder="Email"
-              className="w-full min-h-[3.5em] text-lg input input-bordered input-secondary mb-6"
+              className="w-full lg:min-h-[3.5em] text-lg input input-bordered input-secondary mb-4 lg:mb-6"
               disabled={submitting}
             />
 
@@ -134,12 +134,12 @@ function Signup() {
               value={formState.password}
               onChange={handleFieldChange}
               placeholder="Password"
-              className="w-full min-h-[3.5em] text-lg input input-bordered input-secondary mb-6"
+              className="w-full lg:min-h-[3.5em] text-lg input input-bordered input-secondary lg:mb-6"
               disabled={submitting}
             />
 
             <button
-              className="w-48 bg-primary text-xl text-white rounded-full px-4 py-4 mt-16"
+              className="w-48 bg-primary text-xl text-white rounded-full px-4 py-4 mt-8 lg:mt-16"
               type="submit"
               disabled={submitting}
             >
