@@ -73,7 +73,7 @@ function Signup() {
       return;
     }
 
-    const usersList = await fetchUsers();
+    const usersList: any = await fetchUsers();
 
     let userExists = false;
 

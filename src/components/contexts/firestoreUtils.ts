@@ -1,7 +1,7 @@
 import { collection, getDocs, addDoc } from 'firebase/firestore';
 import { setupFirebase, useFirestore } from '~/lib/firebase';
 
-const db = await useFirestore();
+const db: any = useFirestore();
 
 export const fetchUsers = async () => {
   const allUsers: unknown[] = [];
