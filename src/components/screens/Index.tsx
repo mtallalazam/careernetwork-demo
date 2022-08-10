@@ -1,24 +1,43 @@
 import { Dialog } from '@headlessui/react';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useAuthState } from '~/components/contexts/UserContext';
 import { SignInButton } from '~/components/domain/auth/SignInButton';
 import { SignOutButton } from '~/components/domain/auth/SignOutButton';
 import { Head } from '~/components/shared/Head';
 import fullLogo from '~/full-logo.svg';
-import heroImg from '~/hero-img.png';
+import { useNavigate } from 'react-router-dom';
 
 function Index() {
-  const { state } = useAuthState();
-  const [isOpen, setIsOpen] = useState(true);
-  const completeButtonRef = useRef(null);
+  const [user, setUser] = useState<any>({ email: '', pass: '' });
 
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    localStorage.removeItem('user');
+    navigate('/signup');
+  };
+
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    console.log(user);
+    setUser(JSON.parse(user));
+  }, []);
   return (
     <>
       <Head title="Career Network - Test" />
-      <section className="grid grid-cols-1 grid-rows-4 lg:grid-cols-2 lg:grid-rows-none min-h-screen max-h-screen">
-        <section className="w-full lg:max-h-screen overflow-hidden row-span-2 lg:row-span-auto lg:order-2">
-          <img src={heroImg} alt="" className="w-full h-full object-cover" />
-        </section>
+      <section className="flex flex-col items-center justify-center min-h-screen max-h-screen">
+        <img src={fullLogo} alt="" className="" />
+        <h1 className="text-center text-7xl mt-16 mb-20 font-[rubik]">
+          Hello, <br /> {user.email}
+        </h1>
+
+        <button
+          className="w-48 bg-primary text-xl font-medium text-white rounded-full px-4 py-4"
+          type="button"
+          onClick={handleLogOut}
+        >
+          Logout
+        </button>
       </section>
     </>
   );

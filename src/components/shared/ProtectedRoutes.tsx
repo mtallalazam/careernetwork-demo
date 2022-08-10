@@ -1,8 +1,9 @@
-import { Navigate } from 'react-router-dom';
-const Protected = ({ isLoggedIn, children }) => {
-  if (!isLoggedIn) {
-    return <Navigate to="/" replace />;
-  }
-  return children;
+import { Outlet, Navigate } from 'react-router-dom';
+
+export const ProtectedRoute = () => {
+  let allowed = false;
+  const user = localStorage.getItem('user');
+  if (user) allowed = true;
+
+  return allowed ? <Outlet /> : <Navigate to="/signup" replace />;
 };
-export default Protected;

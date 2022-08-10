@@ -1,5 +1,5 @@
 import { Dialog } from '@headlessui/react';
-import { useRef, useState, ChangeEvent } from 'react';
+import { useRef, useState, ChangeEvent, useEffect } from 'react';
 import { useAuthState } from '~/components/contexts/UserContext';
 import { Head } from '~/components/shared/Head';
 import fullLogo from '~/full-logo.svg';
@@ -95,10 +95,16 @@ function Signup() {
       const user = { email: formState.email, password: formState.password };
       await addUser(user);
       localStorage.setItem('user', JSON.stringify(user));
+      navigate('/');
     } finally {
       resetState();
     }
   };
+
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    if (user) navigate('/');
+  }, []);
 
   return (
     <>
@@ -148,7 +154,7 @@ function Signup() {
           <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
           <div
             ref={modalContentRef}
-            className="relative bg-black flex flex-col items-center justify-center text-white text-center max-w-2xl h-96 p-8 mx-auto rounded-3xl"
+            className="relative bg-black flex flex-col items-center justify-center text-white text-center max-w-2xl h-96 p-8 px-20 mx-auto rounded-3xl"
           >
             <h2 className="text-8xl font-bold mb-6">Sorry</h2>
             <p className="text-5xl">{modalContent}</p>
