@@ -5,6 +5,7 @@ import { Head } from '~/components/shared/Head';
 import fullLogo from '~/full-logo.svg';
 import heroImg from '~/hero-img.png';
 import { fetchUsers, addUser } from '~/components/contexts/firestoreUtils';
+import { useNavigate } from 'react-router-dom';
 
 const initialFormState = { email: '', password: '' };
 
